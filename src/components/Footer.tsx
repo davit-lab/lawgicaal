@@ -31,47 +31,49 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-dark text-primary-foreground">
+    <footer className="bg-charcoal border-t border-gold/10">
       {/* Contact strip */}
-      <div className="section-padding py-10 border-b border-dark-light">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {contactInfo.map(({ icon: Icon, label, value }) => (
-            <div key={label} className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                <Icon className="w-4 h-4 text-gold" />
+      <div className="border-b border-gold/10">
+        <div className="container mx-auto px-6 lg:px-12 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {contactInfo.map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex items-center gap-4">
+                <div className="w-12 h-12 border border-gold/20 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-5 h-5 text-gold" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{label}</p>
+                  <p className="text-sm text-foreground font-light">{value}</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-serif text-sm font-semibold mb-0.5">{label}</h4>
-                <p className="text-xs text-primary-foreground/60">{value}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Main footer */}
-      <div className="section-padding py-14">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="container mx-auto px-6 lg:px-12 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 rounded-lg bg-gold flex items-center justify-center">
-                <Scale className="w-4 h-4 text-black" />
+          <div className="md:col-span-5">
+            <Link to="/" className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-gold flex items-center justify-center">
+                <Scale className="w-5 h-5 text-background" />
               </div>
-              <span className="font-serif text-xl font-bold text-gold">{company.name}</span>
+              <span className="font-serif text-2xl font-light text-foreground tracking-tight">{company.name}</span>
             </Link>
-            <p className="text-sm text-primary-foreground/50 leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-md font-light">
               {company.description}
             </p>
           </div>
 
           {/* Practice areas */}
-          <div>
-            <h4 className="font-serif font-semibold mb-5 text-sm text-gold">ჩვენი გამოცდილება</h4>
-            <ul className="space-y-2.5 text-xs text-primary-foreground/50">
-              {practiceAreas.slice(0, 6).map((item) => (
+          <div className="md:col-span-3">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-gold mb-6">სერვისები</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {practiceAreas.slice(0, 5).map((item) => (
                 <li key={item.id}>
-                  <Link to="/practice-areas" className="hover:text-gold transition-colors duration-200">
+                  <Link to="/practice-areas" className="hover:text-gold transition-colors duration-300 font-light">
                     {item.title}
                   </Link>
                 </li>
@@ -79,42 +81,45 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Company */}
+          <div className="md:col-span-2">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-gold mb-6">ნავიგაცია</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {companyLinks.map(({ label, path }) => (
+                <li key={path}>
+                  <Link to={path} className="hover:text-gold transition-colors duration-300 font-light">{label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Social */}
-          <div>
-            <h4 className="font-serif font-semibold mb-5 text-sm text-gold">გამოგვყევი სოც მედიაში</h4>
-            <div className="flex gap-2">
+          <div className="md:col-span-2">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-gold mb-6">სოციალური</h4>
+            <div className="flex gap-3">
               {socialLinks.map(({ icon: Icon, href }) => (
                 <a
                   key={href}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-dark-light flex items-center justify-center hover:bg-gold hover:text-black transition-all duration-200"
+                  className="w-10 h-10 border border-gold/20 flex items-center justify-center hover:bg-gold hover:text-background hover:border-gold transition-all duration-300"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-serif font-semibold mb-5 text-sm text-gold">კომპანია</h4>
-            <ul className="space-y-2.5 text-xs text-primary-foreground/50">
-              {companyLinks.map(({ label, path }) => (
-                <li key={path}>
-                  <Link to={path} className="hover:text-gold transition-colors duration-200">{label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-dark-light section-padding py-5">
-        <div className="container mx-auto text-center text-xs text-primary-foreground/40">
-          © {new Date().getFullYear()} {company.name}. ყველა უფლება დაცულია.
+      <div className="border-t border-gold/10">
+        <div className="container mx-auto px-6 lg:px-12 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground font-light">
+            <p>© {new Date().getFullYear()} {company.name}. ყველა უფლება დაცულია.</p>
+            <p>Designed with precision</p>
+          </div>
         </div>
       </div>
     </footer>

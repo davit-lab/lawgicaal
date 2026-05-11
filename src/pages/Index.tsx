@@ -51,63 +51,73 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[75vh] flex items-center section-padding overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-card via-background to-card" />
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03]">
-          <img src={wavePattern} alt="" className="w-full h-full object-cover" />
-        </div>
-        <div className="container mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col justify-center"
-          >
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold border border-gold/20 rounded-full px-4 py-2 mb-8 w-fit bg-gold/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              {home.heroSlogan}
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-serif font-bold text-foreground leading-[1.15] mb-6">
-              {home.heroTitle}
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-              {home.heroSubtitle}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact">
-                <Button className="bg-gold text-black hover:bg-gold-light rounded-full px-8 py-6 text-base gap-2 shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-lg)] transition-all duration-300">
-                  {home.ctaText}
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button variant="outline" className="rounded-full px-8 py-6 text-base border-border hover:bg-muted hover:border-gold/50">
-                  ჩვენს შესახებ
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden lg:flex items-center justify-center"
-          >
-            <div className="relative">
-              <div className="w-[420px] h-[480px] rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] border border-gold/20">
-                <img src={heroHome} alt={company.name} className="w-full h-full object-cover" />
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gold-muted/20 via-background to-background" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNkNGE1MzAiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-40" />
+        
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-5rem)] py-16">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col justify-center"
+            >
+              <div className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-gold mb-8">
+                <span className="h-px w-8 bg-gold/50" />
+                {home.heroSlogan}
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-gold text-black rounded-xl p-5 shadow-[var(--shadow-gold)]">
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5" />
-                  <div>
-                    <p className="text-xs opacity-70">უფასო კონსულტაცია</p>
-                    <p className="font-semibold text-sm">24/7 ხელმისაწვდომი</p>
+              
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-light text-foreground leading-[1.1] mb-8">
+                {home.heroTitle}
+              </h1>
+              
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl font-light">
+                {home.heroSubtitle}
+              </p>
+              
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact">
+                  <Button className="bg-gold text-background hover:bg-gold-light rounded-none px-10 py-6 text-sm font-medium tracking-wide uppercase transition-all duration-300 hover:shadow-[var(--shadow-gold)] group">
+                    {home.ctaText}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button variant="outline" className="rounded-none px-10 py-6 text-sm font-medium tracking-wide uppercase border-gold/30 hover:bg-gold/5 hover:border-gold/50 transition-all duration-300">
+                    ჩვენს შესახებ
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden lg:flex items-center justify-center"
+            >
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 via-transparent to-gold/10 blur-2xl" />
+                <div className="relative w-[500px] h-[600px] overflow-hidden subtle-gold-border">
+                  <img src={heroHome} alt={company.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                </div>
+                <div className="absolute -bottom-8 -left-8 bg-charcoal border border-gold/20 p-6 shadow-2xl">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider">უფასო კონსულტაცია</p>
+                      <p className="font-serif text-lg text-foreground">24/7 ხელმისაწვდომი</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
